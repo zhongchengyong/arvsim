@@ -1,2 +1,4 @@
-add_subdirectory(instr)
+add_subdirectory(arch)
 add_subdirectory(core)
+add_subdirectory(sim)
+add_subdirectory(dev)
