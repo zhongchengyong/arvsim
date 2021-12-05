@@ -13,8 +13,13 @@ constexpr const char* file_name = "/home/zhong/riscv/riscv-tests/isa/rv64ui-p-ad
 int main() {
   Simulator sim;
   arv_dev::Memory memory;
-  arv_dev::MMU mmu;
-  arv_common::reg_t entry;
+  arv_dev::MMU mmu(memory);
+  reg_t entry;
   arv_sim::LoadElf(file_name, &mmu, &entry);
   std::cout << "main in simulator" << std::endl;
+  std::vector<uint8_t> data;
+  memory.Read(2147483648, 1148, data);
+  for(auto v : data) {
+    std::cout << (int)v << std::endl;
+  }
 }

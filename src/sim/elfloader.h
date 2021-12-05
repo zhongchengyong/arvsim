@@ -14,7 +14,7 @@ class MMU;
 }
 
 namespace arv_sim {
-std::map<std::string, uint64_t> LoadElf(const char *fn, arv_dev::MMU *memif, arv_common::reg_t *entry);
+std::map<std::string, uint64_t> LoadElf(const char *fn, arv_dev::MMU *memif,reg_t *entry);
 }
 
 #endif

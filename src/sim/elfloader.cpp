@@ -18,7 +18,7 @@
 #include <map>
 
 template<typename T> static inline T from_le(T n) { return n; }
-std::map<std::string, uint64_t> arv_sim::LoadElf(const char *fn, arv_dev::MMU *memif, arv_common::reg_t *entry)
+std::map<std::string, uint64_t> arv_sim::LoadElf(const char *fn, arv_dev::MMU *memif, reg_t *entry)
 {
   int fd = open(fn, O_RDONLY);
   struct stat s;
