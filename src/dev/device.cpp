@@ -5,7 +5,6 @@ using namespace arv_dev;
 
 bool Memory::Write(addr_t addr, size_t len, const uint8_t *bytes) {
   std::vector<uint8_t> data(bytes, bytes + len);
-  std::cout << "Write addr: " << addr << ", len:" << len << std::endl;
   return LoadStore(addr, len, data, true);
 }
 

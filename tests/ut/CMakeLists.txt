@@ -1,4 +1,9 @@
-find_package(Catch2 3 REQUIRED)
-# These tests can use the Catch2-provided main
-add_executable(tests instr_test.cpp)
-target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
+file(GLOB SRCS *.cpp)
+
+ADD_EXECUTABLE(testsim ${SRCS})
+
+TARGET_LINK_LIBRARIES(testsim libgtest libgmock sim dev)
+
+add_test(NAME testsim COMMAND testsim)
