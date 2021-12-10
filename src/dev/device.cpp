@@ -23,7 +23,7 @@ bool Memory::LoadStore(addr_t addr, size_t len, std::vector<uint8_t> &bytes, boo
       else
         bytes.insert(bytes.end(), m_data[page].data() + offset, m_data[page].data() + offset + size);
     } else {
-      std::vector<uint8_t> values(PAGE_SIZE);
+      std::array<uint8_t, PAGE_SIZE> values{};
       if (store) {
         std::copy(bytes.data() + offset, bytes.data() + offset + size, values.data());
       } else {

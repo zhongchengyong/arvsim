@@ -3,6 +3,7 @@
 
 #include "common/sim_define.h"
 #include <unordered_map>
+#include <array>
 #include <vector>
 
 namespace arv_dev {
@@ -21,7 +22,7 @@ class Memory {
   bool LoadStore(addr_t addr, size_t len, std::vector<uint8_t> &bytes, bool store);
 
  private:
-  std::unordered_map<addr_t, std::vector<uint8_t>> m_data;
+  std::unordered_map<addr_t, std::array<uint8_t, PAGE_SIZE>> m_data;
   size_t m_size;
 };
 
