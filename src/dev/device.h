@@ -11,7 +11,7 @@ namespace arv_dev {
 constexpr const reg_t PAGE_SHFIT = 12;
 constexpr const reg_t PAGE_SIZE = 1 << PAGE_SHFIT;
 /**
- * External memory model
+ * External m_memory model
  */
 class Memory {
  public:

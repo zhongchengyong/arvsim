@@ -3,3 +3,7 @@
 //
 
 #include "kernel.h"
+
+void arv_core::AtomicProcessor::Process() {
+
+}

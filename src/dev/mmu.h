@@ -5,7 +5,7 @@
 #include "common/sim_define.h"
 
 /**
- * memory management unit.
+ * m_memory management unit.
  * No virtual address and address mapping yet.
  */
 namespace arv_dev {

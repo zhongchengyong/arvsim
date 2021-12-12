@@ -4,9 +4,16 @@
 #include "dev/device.h"
 #include "common/sim_define.h"
 
+using namespace arv_sim;
+
+using TickEvent = EventWrapper<arv_core::Processor, &arv_core::Processor::Process>;
+
+Simulator::Simulator(ProcessorUP processor_up) : m_memory{}, m_mmu{m_memory} {
+  TickEvent event_wrapper(std::move(processor_up));
+}
 void Simulator::LoadPayload(const std::string &file_name) {
   reg_t entry;
-  arv_sim::LoadElf(file_name.c_str(), &mmu, &entry);
+  arv_sim::LoadElf(file_name.c_str(), &m_mmu, &entry);
 }
 
 void Simulator::Run(size_t n) {

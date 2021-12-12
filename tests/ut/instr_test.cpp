@@ -6,7 +6,7 @@
 
 #include "gtest/gtest.h"
 
-#include <filesystem>
+using namespace arv_sim;
 
 class TestSimulator : public ::testing::Test {
  public:
