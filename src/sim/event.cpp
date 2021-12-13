@@ -11,7 +11,7 @@ void EventQueue::Push(EventPtr event_ptr) {
 }
 
 EventPtr EventQueue::Pop() {
-  EventPtr& event_ptr = m_event_q.front();
+  EventPtr event_ptr = std::move(m_event_q.front());
   m_event_q.pop_front();
   return std::move(event_ptr);
 }

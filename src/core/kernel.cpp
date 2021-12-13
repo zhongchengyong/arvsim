@@ -3,7 +3,9 @@
 //
 
 #include "kernel.h"
+#include <iostream>
 
-void arv_core::AtomicProcessor::Process() {
-
+using namespace arv_core;
+void AtomicProcessor::Process() {
+  std::cout << "Atomic Tick..." << std::endl;
 }

@@ -1,8 +1,6 @@
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-file(GLOB SRCS *.cpp)
-
-ADD_EXECUTABLE(testsim ${SRCS})
+ADD_EXECUTABLE(testsim main.cpp instr_test.cpp)
 
 TARGET_LINK_LIBRARIES(testsim libgtest libgmock sim dev)
 

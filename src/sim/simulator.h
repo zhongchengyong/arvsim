@@ -10,12 +10,13 @@
 
 namespace arv_sim {
 
+using TickEvent = EventWrapper<arv_core::Processor, &arv_core::Processor::Process>;
+using TickEventPtr = std::unique_ptr<TickEvent>;
 using ProcessorUP = std::unique_ptr<arv_core::Processor>;
-GlobalSimLoopExitEvent *simulate_limit_event = nullptr;
 
 class Simulator {
  public:
-  Simulator(ProcessorUP processor_up);
+  Simulator();
   /**
    * @brief Load program.
    */
@@ -32,7 +33,6 @@ class Simulator {
   arv_dev::Memory m_memory;
   arv_dev::MMU m_mmu;
   EventQueue m_event_q;
-  ProcessorUP m_processor_ptr;
 };
 
 }  // namespace arv_sim

@@ -21,7 +21,7 @@ using EventPtr = std::unique_ptr<Event>;
 class Event {
  public:
   virtual void Process() = 0;
-  virtual const std::string Name() const = 0;
+  virtual std::string Name() const = 0;
 };
 
 /**
@@ -31,7 +31,7 @@ class GlobalSimLoopExitEvent : public Event {
  public:
   void Process() override {}
 
-  const std::string Name() const override {
+  std::string Name() const override {
     return "Global_sim.exit_event";
   }
 };
@@ -40,14 +40,14 @@ class GlobalSimLoopExitEvent : public Event {
  * Event wrapper for arbitrary function.
  */
 template <typename T, void (T::* F)()>
-class EventWrapper : Event {
+class EventWrapper : public Event {
  public:
   explicit EventWrapper(std::unique_ptr<T> obj_ptr) : m_obj_ptr{std::move(obj_ptr)} {}
   void Process() override {
     return (m_obj_ptr.get()->*F)();
   }
 
-  const std::string Name() const override {
+  std::string Name() const override {
     return m_obj_ptr->Name() + ".wrap_event";
   }
  private:

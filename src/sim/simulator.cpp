@@ -6,22 +6,22 @@
 
 using namespace arv_sim;
 
-using TickEvent = EventWrapper<arv_core::Processor, &arv_core::Processor::Process>;
 
-Simulator::Simulator(ProcessorUP processor_up) : m_memory{}, m_mmu{m_memory} {
-  TickEvent event_wrapper(std::move(processor_up));
+
+GlobalSimLoopExitEvent *simulate_limit_event = nullptr;
+
+Simulator::Simulator() : m_memory{}, m_mmu{m_memory} {
+  TickEventPtr tick_event = std::make_unique<TickEvent>(std::make_unique<arv_core::AtomicProcessor>());
+  m_event_q.Push(std::move(tick_event));
 }
+
 void Simulator::LoadPayload(const std::string &file_name) {
   reg_t entry;
   arv_sim::LoadElf(file_name.c_str(), &m_mmu, &entry);
 }
 
 void Simulator::Run(size_t n) {
-
-}
-
-int main() {
-  Simulator simulator;
-  simulator.LoadPayload("/home/zhong/study/simulator/arvsim/tests/ut/data/rv64ui-p-addi");
-  simulator.Run(0);
+  EventPtr event_ptr = m_event_q.Pop();
+  event_ptr->Process();
+  m_event_q.Push(std::move(event_ptr));
 }

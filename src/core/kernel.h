@@ -5,6 +5,8 @@
 #ifndef ARVSIM_SRC_KERNEL_H_
 #define ARVSIM_SRC_KERNEL_H_
 
+#include <string>
+
 namespace arv_core {
 
 /**
@@ -13,15 +15,20 @@ namespace arv_core {
 class Processor {
  public:
   virtual void Process() = 0;
+  virtual std::string Name() const = 0;
+  virtual ~Processor() = default;
 };
 
 /**
  * @brief Functional model processor
  */
-class AtomicProcessor : Processor {
+class AtomicProcessor : public Processor {
  public:
- private:
   void Process() override;
+  std::string Name() const override {
+    return "Atomic";
+  }
+  ~AtomicProcessor() = default;
 };
 } // namespace arv_core
 
