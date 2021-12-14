@@ -1,7 +1,7 @@
-#include "dev/mmu.h"
-#include "dev/device.h"
-#include "sim/simulator.h"
-#include "sim/elfloader.h"
+#include "dev/mmu.hh"
+#include "dev/device.hh"
+#include "sim/simulator.hh"
+#include "sim/elfloader.hh"
 #include "test_helper.h"
 
 #include "gtest/gtest.h"

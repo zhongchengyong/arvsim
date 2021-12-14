@@ -1,8 +1,8 @@
-#ifndef ARVSIM_SRC_DEV_MMU_H_
-#define ARVSIM_SRC_DEV_MMU_H_
+#ifndef ARVSIM_SRC_DEV_MMU_HH_
+#define ARVSIM_SRC_DEV_MMU_HH_
 
-#include "device.h"
-#include "common/sim_define.h"
+#include "device.hh"
+#include "common/sim_define.hh"
 
 /**
  * m_memory management unit.
@@ -20,4 +20,4 @@ class MMU {
 
 }
 
-#endif //ARVSIM_SRC_DEV_MMU_H_
+#endif //ARVSIM_SRC_DEV_MMU_HH_

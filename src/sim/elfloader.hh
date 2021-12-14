@@ -1,10 +1,10 @@
 // See LICENSE for license details.
 
-#ifndef _ELFLOADER_H
-#define _ELFLOADER_H
+#ifndef _ELFLOADER_HH
+#define _ELFLOADER_HH
 
-#include "elf.h"
-#include "dev/mmu.h"
+#include "elf.hh"
+#include "dev/mmu.hh"
 
 #include <map>
 #include <string>

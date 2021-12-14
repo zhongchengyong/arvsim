@@ -1,7 +1,7 @@
-#ifndef ARVSIM_SRC_SIM_DEVICE_H_
-#define ARVSIM_SRC_SIM_DEVICE_H_
+#ifndef ARVSIM_SRC_SIM_DEVICE_HH_
+#define ARVSIM_SRC_SIM_DEVICE_HH_
 
-#include "common/sim_define.h"
+#include "common/sim_define.hh"
 #include <unordered_map>
 #include <array>
 #include <vector>
@@ -28,4 +28,4 @@ class Memory {
 
 }
 
-#endif //ARVSIM_SRC_SIM_DEVICE_H_
+#endif //ARVSIM_SRC_SIM_DEVICE_HH_

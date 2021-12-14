@@ -1,10 +1,10 @@
-#ifndef ARVSIM_SRC_SIM_SIMULATOR_H_
-#define ARVSIM_SRC_SIM_SIMULATOR_H_
-#include "event.h"
+#ifndef ARVSIM_SRC_SIM_SIMULATOR_HH_
+#define ARVSIM_SRC_SIM_SIMULATOR_HH_
+#include "event.hh"
 
-#include "dev/device.h"
-#include "dev/mmu.h"
-#include "core/kernel.h"
+#include "dev/device.hh"
+#include "dev/mmu.hh"
+#include "core/kernel.hh"
 
 #include <string>
 
@@ -36,4 +36,4 @@ class Simulator {
 };
 
 }  // namespace arv_sim
-#endif //ARVSIM_SRC_SIM_SIMULATOR_H_
+#endif //ARVSIM_SRC_SIM_SIMULATOR_HH_

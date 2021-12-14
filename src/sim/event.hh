@@ -2,8 +2,10 @@
 // Created by zhong on 12/12/21.
 //
 
-#ifndef ARVSIM_SRC_SIM_EVENT_H_
-#define ARVSIM_SRC_SIM_EVENT_H_
+#ifndef ARVSIM_SRC_SIM_EVENT_HH_
+#define ARVSIM_SRC_SIM_EVENT_HH_
+
+#include "common/sim_define.hh"
 
 #include <deque>
 #include <memory>
@@ -20,8 +22,20 @@ using EventPtr = std::unique_ptr<Event>;
  */
 class Event {
  public:
+  Event() : m_when{0}{}
   virtual void Process() = 0;
   virtual std::string Name() const = 0;
+  virtual void SetWhen(cycle_t cycle) noexcept {
+    m_when = cycle;
+  }
+  virtual cycle_t GetWhen() const noexcept {
+    return m_when;
+  }
+ private:
+  /**
+   * The Processing cycle.
+   */
+  cycle_t m_when;
 };
 
 /**
@@ -29,6 +43,7 @@ class Event {
  */
 class GlobalSimLoopExitEvent : public Event {
  public:
+  GlobalSimLoopExitEvent() : Event() {}
   void Process() override {}
 
   std::string Name() const override {
@@ -39,9 +54,10 @@ class GlobalSimLoopExitEvent : public Event {
 /**
  * Event wrapper for arbitrary function.
  */
-template <typename T, void (T::* F)()>
+template<typename T, void (T::* F)()>
 class EventWrapper : public Event {
  public:
+  EventWrapper() : Event() {}
   explicit EventWrapper(std::unique_ptr<T> obj_ptr) : m_obj_ptr{std::move(obj_ptr)} {}
   void Process() override {
     return (m_obj_ptr.get()->*F)();
@@ -54,16 +70,15 @@ class EventWrapper : public Event {
   std::unique_ptr<T> m_obj_ptr;
 };
 
-
 /**
  * @brief Use queue to store event.
  */
 class EventQueue {
  public:
-  void Push(EventPtr event_ptr);
-  EventPtr Pop();
+  void Schedule(EventPtr event_ptr, cycle_t when);
+  EventPtr DeSchedule();
  private:
   std::deque<EventPtr> m_event_q;
 };
 }  // namespace arv_sim
-#endif //ARVSIM_SRC_SIM_EVENT_H_
+#endif //ARVSIM_SRC_SIM_EVENT_HH_

@@ -1,8 +1,8 @@
-#include "elf.h"
-#include "elfloader.h"
+#include "elf.hh"
+#include "elfloader.hh"
 
-#include "common/sim_define.h"
-#include "dev/mmu.h"
+#include "common/sim_define.hh"
+#include "dev/mmu.hh"
 
 #include <cstring>
 #include <string>

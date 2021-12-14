@@ -2,7 +2,7 @@
 // Created by zhong on 12/13/21.
 //
 
-#include "sim/simulator.h"
+#include "sim/simulator.hh"
 
 using namespace arv_sim;
 

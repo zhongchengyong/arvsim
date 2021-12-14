@@ -2,8 +2,8 @@
 // Created by zhong on 9/20/21.
 //
 
-#ifndef ARVSIM_SRC_KERNEL_H_
-#define ARVSIM_SRC_KERNEL_H_
+#ifndef ARVSIM_SRC_KERNEL_HH_
+#define ARVSIM_SRC_KERNEL_HH_
 
 #include <string>
 
@@ -28,8 +28,8 @@ class AtomicProcessor : public Processor {
   std::string Name() const override {
     return "Atomic";
   }
-  ~AtomicProcessor() = default;
+  ~AtomicProcessor() override = default;
 };
 } // namespace arv_core
 
-#endif //ARVSIM_SRC_KERNEL_H_
+#endif //ARVSIM_SRC_KERNEL_HH_

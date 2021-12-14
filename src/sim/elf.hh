@@ -1,7 +1,7 @@
 // See LICENSE for details.
 
-#ifndef _ELF_H
-#define _ELF_H
+#ifndef _ELF_HH
+#define _ELF_HH
 
 #include <stdint.h>
 

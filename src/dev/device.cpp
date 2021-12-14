@@ -1,4 +1,4 @@
-#include "device.h"
+#include "device.hh"
 #include <iostream>
 
 using namespace arv_dev;
