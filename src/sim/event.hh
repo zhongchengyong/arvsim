@@ -31,6 +31,7 @@ class Event {
   virtual cycle_t GetWhen() const noexcept {
     return m_when;
   }
+  virtual ~Event() = default;
  private:
   /**
    * The Processing cycle.

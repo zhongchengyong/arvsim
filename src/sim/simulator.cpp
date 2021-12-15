@@ -21,5 +21,5 @@ void Simulator::LoadPayload(const std::string &file_name) {
 void Simulator::Run(size_t n) {
   EventPtr event_ptr = m_event_q.DeSchedule();
   event_ptr->Process();
-  m_event_q.Schedule(std::move(event_ptr));
+  m_event_q.Schedule(std::move(event_ptr), event_ptr->GetWhen() + 1);
 }
