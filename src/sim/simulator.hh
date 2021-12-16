@@ -4,7 +4,7 @@
 
 #include "dev/device.hh"
 #include "dev/mmu.hh"
-#include "core/kernel.hh"
+#include "core/processor.hh"
 
 #include <string>
 
