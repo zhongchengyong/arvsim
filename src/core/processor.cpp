@@ -14,5 +14,17 @@ void AtomicProcessor::Process() {
 }
 
 void O3Processor::Process() {
-
+  Tick();
 }
+
+void O3Processor::Tick() {
+  m_fetch.Tick();
+  m_decode.Tick();
+  m_rename.Tick();
+  m_iew.Tick();
+  m_commit.Tick();
+}
+
+O3Processor::O3Processor(MMU &mmu) : Processor{mmu}, m_fetch(*this, 0), m_decode(*this), m_rename(*this), m_iew(*this),
+                                     m_commit(*this) {}
+

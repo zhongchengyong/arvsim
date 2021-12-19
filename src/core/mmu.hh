@@ -1,21 +1,22 @@
 #ifndef ARVSIM_SRC_DEV_MMU_HH_
 #define ARVSIM_SRC_DEV_MMU_HH_
 
-#include "device.hh"
-#include "common/sim_define.hh"
+#include "dev/device.hh"
+#include "common/types.hh"
 
 /**
  * m_memory management unit.
  * No virtual address and address mapping yet.
  */
-namespace arv_dev {
+namespace arv_core {
 
 class MMU {
  public:
-  explicit MMU(Memory& memory);
+  explicit MMU(arv_dev::Memory& memory);
   bool Write(addr_t addr, size_t len, const uint8_t *bytes);
+  void Read(addr_t addr, size_t len, std::vector<uint8_t>& data);
  private:
-  Memory& m_memory;
+  arv_dev::Memory& m_memory;
 };
 
 }

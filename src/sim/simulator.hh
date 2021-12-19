@@ -3,7 +3,7 @@
 #include "event.hh"
 
 #include "dev/device.hh"
-#include "dev/mmu.hh"
+#include "core/mmu.hh"
 #include "core/processor.hh"
 
 #include <string>
@@ -12,7 +12,7 @@ namespace arv_sim {
 
 using TickEvent = EventWrapper<arv_core::Processor, &arv_core::Processor::Process>;
 using TickEventPtr = std::unique_ptr<TickEvent>;
-using ProcessorUP = std::unique_ptr<arv_core::Processor>;
+using ProcessorSP = std::shared_ptr<arv_core::Processor>;
 
 class Simulator {
  public:
@@ -31,7 +31,8 @@ class Simulator {
 
  private:
   arv_dev::Memory m_memory;
-  arv_dev::MMU m_mmu;
+  arv_core::MMU m_mmu;
+  ProcessorSP m_processor_sp;
   EventQueue m_event_q;
 };
 

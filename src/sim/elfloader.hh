@@ -4,17 +4,17 @@
 #define _ELFLOADER_HH
 
 #include "elf.hh"
-#include "dev/mmu.hh"
+#include "core/mmu.hh"
 
 #include <map>
 #include <string>
 
-namespace arv_dev {
+namespace arv_core {
 class MMU;
 }
 
 namespace arv_sim {
-std::map<std::string, uint64_t> LoadElf(const char *fn, arv_dev::MMU *memif,reg_t *entry);
+std::map<std::string, uint64_t> LoadElf(const char *fn, arv_core::MMU *memif,reg_t *entry);
 }
 
 #endif

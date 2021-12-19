@@ -5,7 +5,7 @@
 #ifndef ARVSIM_SRC_SIM_EVENT_HH_
 #define ARVSIM_SRC_SIM_EVENT_HH_
 
-#include "common/sim_define.hh"
+#include "common/types.hh"
 
 #include <deque>
 #include <memory>
@@ -59,7 +59,7 @@ template<typename T, void (T::* F)()>
 class EventWrapper : public Event {
  public:
   EventWrapper() : Event() {}
-  explicit EventWrapper(std::unique_ptr<T> obj_ptr) : m_obj_ptr{std::move(obj_ptr)} {}
+  explicit EventWrapper(std::shared_ptr<T> obj_ptr) : m_obj_ptr{std::move(obj_ptr)} {}
   void Process() override {
     return (m_obj_ptr.get()->*F)();
   }
@@ -68,7 +68,7 @@ class EventWrapper : public Event {
     return m_obj_ptr->Name() + ".wrap_event";
   }
  private:
-  std::unique_ptr<T> m_obj_ptr;
+  std::shared_ptr<T> m_obj_ptr;
 };
 
 /**
@@ -76,7 +76,7 @@ class EventWrapper : public Event {
  */
 class EventQueue {
  public:
-  void Schedule(EventPtr event_ptr, cycle_t when);
+  void Schedule(EventPtr event_ptr, cycle_t delay = 1);
   EventPtr DeSchedule();
  private:
   std::deque<EventPtr> m_event_q;

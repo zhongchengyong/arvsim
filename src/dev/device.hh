@@ -1,7 +1,7 @@
 #ifndef ARVSIM_SRC_SIM_DEVICE_HH_
 #define ARVSIM_SRC_SIM_DEVICE_HH_
 
-#include "common/sim_define.hh"
+#include "common/types.hh"
 #include <unordered_map>
 #include <array>
 #include <vector>

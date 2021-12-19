@@ -1,5 +1,5 @@
-#ifndef ARVSIM_SRC_COMMON_SIM_DEFINE_HH_
-#define ARVSIM_SRC_COMMON_SIM_DEFINE_HH_
+#ifndef ARVSIM_SRC_COMMON_TYPES_HH_
+#define ARVSIM_SRC_COMMON_TYPES_HH_
 
 #include <cstddef>
 #include <cstdint>
@@ -11,4 +11,4 @@ using addr_t = size_t;
 using reg_t = uint64_t;
 using cycle_t = size_t;
 
-#endif //ARVSIM_SRC_COMMON_SIM_DEFINE_HH_
+#endif //ARVSIM_SRC_COMMON_TYPES_HH_

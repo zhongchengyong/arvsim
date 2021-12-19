@@ -1,8 +1,8 @@
 #include "elf.hh"
 #include "elfloader.hh"
 
-#include "common/sim_define.hh"
-#include "dev/mmu.hh"
+#include "common/types.hh"
+#include "core/mmu.hh"
 
 #include <cstring>
 #include <string>
@@ -18,7 +18,7 @@
 #include <map>
 
 template<typename T> static inline T from_le(T n) { return n; }
-std::map<std::string, uint64_t> arv_sim::LoadElf(const char *fn, arv_dev::MMU *memif, reg_t *entry)
+std::map<std::string, uint64_t> arv_sim::LoadElf(const char *fn, arv_core::MMU *memif, reg_t *entry)
 {
   int fd = open(fn, O_RDONLY);
   struct stat s;

@@ -1,4 +1,4 @@
-#include "dev/mmu.hh"
+#include "core/mmu.hh"
 #include "dev/device.hh"
 #include "sim/simulator.hh"
 #include "sim/elfloader.hh"
@@ -21,7 +21,7 @@ class TestSimulator : public ::testing::Test {
   std::string input_elf;
   Simulator sim;
   arv_dev::Memory memory;
-  arv_dev::MMU mmu;
+  arv_core::MMU mmu;
 };
 
 TEST_F(TestSimulator, LoadProgramTest) {
