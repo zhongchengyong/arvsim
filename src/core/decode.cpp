@@ -3,7 +3,8 @@
 //
 
 #include "decode.hh"
+#include "processor.hh"
 
 void arv_core::Decode::Tick() {
-
+  m_processor.FromFetch();
 }

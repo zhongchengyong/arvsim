@@ -9,17 +9,17 @@
 
 namespace arv_core {
 
-class Processor;
+class O3Processor;
 /**
  * Rename stage.
  */
 class IEW{
  public:
-  explicit IEW(Processor& processor) : m_processor{processor} {}
+  explicit IEW(O3Processor& processor) : m_processor{processor} {}
   void Tick();
 
  private:
-  Processor&  m_processor;
+  O3Processor&  m_processor;
 };
 
 }  // namespace arv_core

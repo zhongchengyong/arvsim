@@ -15,6 +15,7 @@ class MMU {
   explicit MMU(arv_dev::Memory& memory);
   bool Write(addr_t addr, size_t len, const uint8_t *bytes);
   void Read(addr_t addr, size_t len, std::vector<uint8_t>& data);
+  uint64_t FetchInstr(addr_t addr, size_t len);
  private:
   arv_dev::Memory& m_memory;
 };

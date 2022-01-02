@@ -9,17 +9,17 @@
 
 namespace arv_core {
 
-class Processor;
+class O3Processor;
 /**
  * Fetch stage.
  */
 class Decode {
  public:
-  explicit Decode(Processor& processor) : m_processor{processor} {}
+  explicit Decode(O3Processor& processor) : m_processor{processor} {}
   void Tick();
 
  private:
-  Processor& m_processor;
+  O3Processor& m_processor;
 };
 
 }  // namespace arv_core

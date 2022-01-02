@@ -25,7 +25,7 @@ namespace arv_core {
  */
 class Processor {
  public:
-  Processor(MMU& mmu) : m_mmu{mmu} {}
+  explicit Processor(MMU &mmu) : m_stat{}, m_mmu{mmu} {}
   virtual void Process() = 0;
   virtual std::string Name() const = 0;
   virtual ~Processor() = default;
@@ -44,8 +44,7 @@ class Processor {
      */
     size_t m_inst;
   } m_stat;
-  MMU& m_mmu;
- private:
+  MMU &m_mmu;
 };
 
 /**
@@ -53,7 +52,7 @@ class Processor {
  */
 class AtomicProcessor : public Processor {
  public:
-  explicit AtomicProcessor(MMU& mmu) : Processor(mmu) {}
+  explicit AtomicProcessor(MMU &mmu) : Processor(mmu) {}
   void Process() override;
   std::string Name() const override {
     return "Atomic";
@@ -66,14 +65,20 @@ class AtomicProcessor : public Processor {
  */
 class O3Processor : public Processor {
  public:
-  explicit O3Processor(MMU& mmu);
+  explicit O3Processor(MMU &mmu);
   void Process() override;
   void Tick();
   std::string Name() const override {
     return "Out-of-order";
   }
   ~O3Processor() override = default;
+  FetchStruct &FromFetch();
+  DecodeStruct &FromDecode();
+  RenameStruct &FromRename();
+  IEWStruct &FromIEW();
+  CommitStruct &FromCommit();
  private:
+  TimeBuffer m_time_buffer;
   Fetch m_fetch;
   Decode m_decode;
   Rename m_rename;

@@ -13,19 +13,19 @@
 
 namespace arv_core {
 
-class Processor;
+class O3Processor;
 /**
  * Fetch stage.
  */
 class Fetch {
  public:
-  explicit Fetch(Processor& processor, addr_t pc);
+  explicit Fetch(O3Processor& processor, addr_t pc);
   void Tick();
 
  private:
-  Processor& m_processor;
+  O3Processor& m_processor;
   addr_t m_pc;
-  FetchStruct m_fetch_struct;
+  FetchStruct& m_fetch_struct;
 };
 
 }  // namespace arv_core

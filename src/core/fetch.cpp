@@ -5,16 +5,18 @@
 #include "fetch.hh"
 #include "processor.hh"
 
+#include "pipeline.hh"
+
 using namespace arv_core;
 
 void Fetch::Tick() {
   std::vector<uint8_t> data;
 //  m_processor.m_mmu.Read(m_pc, 4, data);
-  m_processor.m_mmu.Read(0x80000000, 4, data);
-  for (const auto v : data) {
-    std::cout << (int)v << std::endl;
-  }
+  uint64_t instr = m_processor.m_mmu.FetchInstr(0x80000000, 4);
+  m_fetch_struct.instrs.push_back(instr);
 }
 
-Fetch::Fetch(arv_core::Processor &processor, addr_t pc) : m_processor{processor}, m_pc{pc} {}
+Fetch::Fetch(arv_core::O3Processor &processor, addr_t pc) : m_processor{processor},
+                                                            m_pc{pc},
+                                                            m_fetch_struct(processor.FromFetch()) {}
 

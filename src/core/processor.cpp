@@ -25,6 +25,30 @@ void O3Processor::Tick() {
   m_commit.Tick();
 }
 
-O3Processor::O3Processor(MMU &mmu) : Processor{mmu}, m_fetch(*this, 0), m_decode(*this), m_rename(*this), m_iew(*this),
+O3Processor::O3Processor(MMU &mmu) : Processor{mmu},
+                                     m_time_buffer{},
+                                     m_fetch(*this, 0),
+                                     m_decode(*this),
+                                     m_rename(*this),
+                                     m_iew(*this),
                                      m_commit(*this) {}
 
+FetchStruct &O3Processor::FromFetch() {
+  return m_time_buffer.m_fetch;
+}
+
+DecodeStruct &O3Processor::FromDecode() {
+  return m_time_buffer.m_decode;
+}
+
+RenameStruct &O3Processor::FromRename() {
+  return m_time_buffer.m_rename;
+}
+
+IEWStruct &O3Processor::FromIEW() {
+  return m_time_buffer.m_iew;
+}
+
+CommitStruct &O3Processor::FromCommit() {
+  return m_time_buffer.m_commit;
+}

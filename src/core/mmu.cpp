@@ -12,4 +12,10 @@ bool MMU::Write(addr_t addr, size_t len, const uint8_t *bytes) {
 void MMU::Read(addr_t addr, size_t len, std::vector<uint8_t>& data) {
   m_memory.Read(addr, len, data);
 }
+uint64_t MMU::FetchInstr(addr_t addr, size_t len) {
+  std::vector<uint8_t> data;
+  m_memory.Read(addr, len, data);
+  uint64_t value = *reinterpret_cast<uint64_t *>(data.data());
+  return value;
+}
 
