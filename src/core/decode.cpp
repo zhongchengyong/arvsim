@@ -6,5 +6,6 @@
 #include "processor.hh"
 
 void arv_core::Decode::Tick() {
-  m_processor.FromFetch();
+  std::vector<uint32_t> instrs = m_processor.FromFetch().instrs;
+  // Use processor::state_t to init instructions
 }

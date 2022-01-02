@@ -11,7 +11,7 @@
 namespace arv_core {
 
 struct FetchStruct {
-  std::vector<uint64_t> instrs;
+  std::vector<uint32_t> instrs;
 };
 
 struct DecodeStruct {};

@@ -5,9 +5,6 @@
 #ifndef ARVSIM_SRC_PROCESSOR_HH_
 #define ARVSIM_SRC_PROCESSOR_HH_
 
-#include "common/types.hh"
-#include "common/logger.hh"
-
 #include "fetch.hh"
 #include "decode.hh"
 #include "rename.hh"
@@ -16,16 +13,26 @@
 #include "commit.hh"
 #include "mmu.hh"
 
+#include "common/types.hh"
+#include "common/logger.hh"
+#include "arch/register_file.hh"
+
 #include <string>
 
 namespace arv_core {
+
+struct State {
+  // XPR and FPR
+  RegisterFile<uint64_t, 32, false> m_xpr;
+  RegisterFile<float, 32, true> m_fpr;
+};
 
 /**
  * @brief The base processor class.
  */
 class Processor {
  public:
-  explicit Processor(MMU &mmu) : m_stat{}, m_mmu{mmu} {}
+  explicit Processor(MMU &mmu) : m_statistic{}, m_mmu{mmu}, m_state{} {}
   virtual void Process() = 0;
   virtual std::string Name() const = 0;
   virtual ~Processor() = default;
@@ -33,7 +40,7 @@ class Processor {
   /**
    * Statistic for processor.
    */
-  struct Stat {
+  struct Statistic {
     /**
      * Counting processor cycle.
      */
@@ -43,8 +50,9 @@ class Processor {
      * Counting retired instructions.
      */
     size_t m_inst;
-  } m_stat;
+  } m_statistic;
   MMU &m_mmu;
+  State m_state;
 };
 
 /**
