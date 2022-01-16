@@ -5,20 +5,26 @@
 #ifndef ARVSIM_SRC_CORE_PIPELINE_H_
 #define ARVSIM_SRC_CORE_PIPELINE_H_
 
-#include <vector>
+#include "arch/instr.hh"
+
+#include <deque>
 #include <cstdint>
 
 namespace arv_core {
 
 struct FetchStruct {
-  std::vector<uint32_t> instrs;
+  std::deque<uint32_t> opcodes;
 };
 
-struct DecodeStruct {};
+struct DecodeStruct {
+  std::deque<InstrUP> instrs;
+};
 
 struct RenameStruct {};
 
-struct IEWStruct {};
+struct IEWStruct {
+  std::deque<ResultUP> results;
+};
 
 struct CommitStruct {};
 

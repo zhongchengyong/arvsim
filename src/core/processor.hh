@@ -16,16 +16,12 @@
 #include "common/types.hh"
 #include "common/logger.hh"
 #include "arch/register_file.hh"
+#include "arch/state.hh"
 
 #include <string>
 
 namespace arv_core {
 
-struct State {
-  // XPR and FPR
-  RegisterFile<uint64_t, 32, false> m_xpr;
-  RegisterFile<float, 32, true> m_fpr;
-};
 
 /**
  * @brief The base processor class.

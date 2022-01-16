@@ -26,7 +26,7 @@ class RegisterFile {
   }
 
   /**
-   * @brief Reset register_file value.
+   * @brief Reset register_file m_value.
    */
   void Reset() {
     data.fill(0);

@@ -4,6 +4,7 @@
 #include "encoding.hh"
 
 #include "instr.hh"
-void AddInstruction::Execute() {
 
+ResultUP AddInstruction::Execute() {
+  return std::make_unique<RfResult>(m_state, rd, m_state.m_xpr[rs1] + m_state.m_xpr[rs2]);
 }

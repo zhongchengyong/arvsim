@@ -5,6 +5,7 @@
 #ifndef ARVSIM_SRC_CORE_DECODE_H_
 #define ARVSIM_SRC_CORE_DECODE_H_
 
+#include "arch/instr.hh"
 #include <memory>
 
 namespace arv_core {
@@ -19,6 +20,7 @@ class Decode {
   void Tick();
 
  private:
+  InstrUP DoDecode(uint32_t opcode);
   O3Processor& m_processor;
 };
 

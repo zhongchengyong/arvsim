@@ -13,7 +13,7 @@ void Fetch::Tick() {
   std::vector<uint8_t> data;
 //  m_processor.m_mmu.Read(m_pc, 4, data);
   uint64_t instr = m_processor.m_mmu.FetchInstr(0x80000000, 4);
-  m_fetch_struct.instrs.push_back(instr);
+  m_fetch_struct.opcodes.push_back(instr);
 }
 
 Fetch::Fetch(arv_core::O3Processor &processor, addr_t pc) : m_processor{processor},

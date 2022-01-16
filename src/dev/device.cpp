@@ -27,7 +27,7 @@ bool Memory::LoadStore(addr_t addr, size_t len, std::vector<uint8_t> &bytes, boo
       if (store) {
         std::copy(bytes.data() + offset, bytes.data() + offset + size, values.data());
       } else {
-        // Copy data to bytes, which value is zero.
+        // Copy data to bytes, which m_value is zero.
         bytes.insert(bytes.end(), values.data(), values.data() + size);
       }
       m_data[page] = values;

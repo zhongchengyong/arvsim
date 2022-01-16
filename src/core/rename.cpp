@@ -4,5 +4,5 @@
 
 #include "rename.hh"
 void arv_core::Rename::Tick() {
-
+  // Do nothing now.
 }
